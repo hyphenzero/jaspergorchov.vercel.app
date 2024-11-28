@@ -3,12 +3,12 @@
 import * as Headless from '@headlessui/react'
 import clsx from 'clsx'
 import { LayoutGroup, motion } from 'framer-motion'
-import React, { useId } from 'react'
+import React, { forwardRef, useId } from 'react'
 import { TouchTarget } from './button'
 import { Link } from './link'
 
 export function Navbar({ className, ...props }: React.ComponentPropsWithoutRef<'nav'>) {
-  return <nav {...props} className={clsx(className, 'flex flex-1 items-center gap-4 py-2.5')} />
+  return <nav {...props} className={clsx(className, 'flex flex-1 items-center gap-4 py-8')} />
 }
 
 export function NavbarDivider({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
@@ -29,7 +29,7 @@ export function NavbarSpacer({ className, ...props }: React.ComponentPropsWithou
   return <div aria-hidden="true" {...props} className={clsx(className, '-ml-4 flex-1')} />
 }
 
-export const NavbarItem = React.forwardRef(function NavbarItem(
+export const NavbarItem = forwardRef(function NavbarItem(
   {
     current,
     className,
@@ -65,7 +65,7 @@ export const NavbarItem = React.forwardRef(function NavbarItem(
       {current && (
         <motion.span
           layoutId="current-indicator"
-          className="absolute inset-x-2 -bottom-[14.5px] h-0.5 rounded-full bg-zinc-950 dark:bg-white"
+          className="absolute inset-x-2 -bottom-[0.8125rem] h-0.5 rounded-full bg-zinc-950 dark:bg-white"
         />
       )}
       {'href' in props ? (

@@ -9,12 +9,16 @@ const config: Config = {
       sans: ['InterVariable', 'Inter', ...defaultTheme.fontFamily.sans],
       display: [['InterVariable', 'Inter', ...defaultTheme.fontFamily.sans], { fontVariationSettings: '"opsz" 32' }],
       mono: ['var(--font-ibm-plex-mono)', ...defaultTheme.fontFamily.mono],
-			code: [
-				// 'Fira Code',
-				...defaultTheme.fontFamily.mono
-			],
+      code: [
+        'Fira Code',
+        ...defaultTheme.fontFamily.mono,
+      ],
     },
-    extend: {},
+    extend: {
+      borderRadius: {
+        '4xl': '2rem',
+      },
+    },
   },
   plugins: [],
 }

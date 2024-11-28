@@ -2,7 +2,7 @@ import { Button } from '@/components/button'
 import { Card } from '@/components/card'
 import { Container } from '@/components/container'
 import { FadeIn, FadeInStagger } from '@/components/fade-in'
-import workImage from '@/images/work.png'
+import workImage from '/public/work.png'
 import { ArrowRightIcon, PlayIcon } from '@heroicons/react/16/solid'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -69,18 +69,13 @@ export default function Home() {
             </div> */}
 
           <Container className="">
-            <FadeInStagger faster className="mx-auto max-w-5xl">
-              <FadeIn>
+            <div className="mx-auto max-w-5xl">
                 <p className="mb-[1em] text-center text-3xl font-medium leading-none tracking-[.004em] text-zinc-400">
                   Jasper Gorchov
                 </p>
-              </FadeIn>
-              <FadeIn>
                 <h1 className="text-center text-6xl font-medium tracking-[-0.015em] text-zinc-950 sm:text-7xl dark:text-white">
                   13-year-old developer, designer, and digital artist.
                 </h1>
-              </FadeIn>
-              <FadeIn>
                 <div className="mx-auto mt-14 flex w-fit items-center gap-x-6">
                   <Button>View work</Button>
                   <Button plain>
@@ -88,8 +83,7 @@ export default function Home() {
                     Watch the video
                   </Button>
                 </div>
-              </FadeIn>
-            </FadeInStagger>
+            </div>
           </Container>
 
           {/* <Spline

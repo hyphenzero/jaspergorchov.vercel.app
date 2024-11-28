@@ -1,8 +1,7 @@
 import { Container } from '@/components/container'
 import { FadeIn } from '@/components/fade-in'
 import { MDXComponents } from '@/components/mdx-components'
-import {} from '@/components/social-icons'
-import { FacebookIcon, InstagramIcon, XIcon } from '@/components/social-media'
+import { InstagramIcon, XIcon } from '@/components/socials'
 import { Tag } from '@/components/tag'
 // import { PageLinks } from '@/components/PageLinks'
 import { formatDate } from '@/lib/formatDate'
@@ -12,7 +11,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Text } from '@/components/text'
 
-export default async function BlogArticleWrapper({
+export default async function ArticleWrapper({
   article,
   children,
 }: {
@@ -29,9 +28,8 @@ export default async function BlogArticleWrapper({
   return (
     <>
       <article className="pt-8 sm:pt-12 lg:pt-24">
-        <FadeIn>
-          <header className="mx-auto flex max-w-3xl flex-col px-6 text-center lg:px-8">
-            <h1 className="mt-5 block text-balance text-3xl font-semibold leading-tight tracking-tight text-zinc-950 sm:text-[length:clamp(2rem,3.75vw,3rem)] dark:text-white">
+          <header className="mx-auto flex max-w-4xl flex-col px-6 text-center lg:px-8">
+            <h1 className="mt-2 block text-balance text-3xl font-semibold leading-tight tracking-tight text-zinc-950 sm:text-[length:clamp(2rem,3.75vw,3rem)] dark:text-white">
               {article.title}
             </h1>
             <time
@@ -52,37 +50,19 @@ export default async function BlogArticleWrapper({
                 <XIcon />
               </Link>
               <InstagramIcon />
-              <FacebookIcon />
               <LinkIcon />
             </div>
           </header>
-        </FadeIn>
 
-        <FadeIn wait={1}>
           <Image
             src={article.cover}
             alt=""
-            className="mx-auto mt-16 w-[calc(100%-theme(spacing.4))] rounded-2xl sm:mt-24"
+            className="mx-auto mt-16 sm:w-[calc(100%-theme(spacing.8))] sm:rounded-2xl sm:mt-24"
           />
 
-          {/* <div className="sm:hidden mx-auto max-w-3xl px-3">
-            <div className="relative my-12 overflow-clip rounded-2xl">
-              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-slate-900/10 dark:ring-white/10" />
-              <Image
-                src={article.cover}
-                alt=""
-                sizes="(min-width: 768px) 42rem, 100vw"
-                className="inset-0 object-cover"
-              />
-            </div>
-          </div> */}
-        </FadeIn>
-
-        <FadeIn>
           <Container>
             <MDXComponents.wrapper className="mt-16">{children}</MDXComponents.wrapper>
           </Container>
-        </FadeIn>
       </article>
 
       {/* {moreArticles.length > 0 && (

@@ -1,6 +1,6 @@
 import * as Headless from '@headlessui/react'
-import { clsx } from 'clsx'
-import { forwardRef } from 'react'
+import clsx from 'clsx'
+import React, { forwardRef } from 'react'
 
 export function InputGroup({ children }: React.ComponentPropsWithoutRef<'span'>) {
   return (
@@ -85,6 +85,8 @@ export const Input = forwardRef(function Input(
           'data-[invalid]:border-red-500 data-[invalid]:data-[hover]:border-red-500 data-[invalid]:dark:border-red-500 data-[invalid]:data-[hover]:dark:border-red-500',
           // Disabled state
           'data-[disabled]:border-zinc-950/20 dark:data-[hover]:data-[disabled]:border-white/15 data-[disabled]:dark:border-white/15 data-[disabled]:dark:bg-white/[2.5%]',
+          // System icons
+          'dark:[color-scheme:dark]',
         ])}
       />
     </span>

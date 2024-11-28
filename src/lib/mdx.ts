@@ -26,17 +26,23 @@ export type MDXEntry<T> = T & { href: string; metadata: T }
 export interface Article {
   date: string
   title: string
+  shortTitle: string
   description: string
   cover: ImageProps['src']
   tags: Array<string>
+  banner: Array<string>
+	href: string
 }
 
 export interface Project {
   date: string
   title: string
+  shortTitle: string
   description: string
   cover: ImageProps['src']
   tags: Array<string>
+  banner: Array<string>
+	href: string
 }
 
 export function loadArticles() {

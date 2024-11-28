@@ -66,9 +66,9 @@ export default async function Blog() {
       </main> */}
 
       <Container as="main" className="">
-        <FadeInStagger className="[&>:not(:first-child)]:mt-24">
+        <div className="[&>:not(:first-child)]:mt-24">
           {articles.map((article) => (
-            <FadeIn
+            <div
               key={article.date}
               className="grid grid-cols-3 border-t border-zinc-950/10 pt-8 dark:border-white/10"
             >
@@ -87,9 +87,9 @@ export default async function Blog() {
 								<Text className="mt-4">{article.description}</Text>
 								<Button outline className="mt-6">Read more <ChevronRightIcon /></Button>
               </Link>
-            </FadeIn>
+            </div>
           ))}
-        </FadeInStagger>
+        </div>
       </Container>
     </>
   )

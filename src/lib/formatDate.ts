@@ -1,12 +1,13 @@
-export function formatDate(dateString: string, weekday = false) {
-  let parts = dateString.split('-')
-  let hasDay = parts.length > 2
+import { format, isValid, parse } from 'date-fns'
 
-  return new Date(`${dateString}Z`).toLocaleDateString('en-US', {
-    weekday: weekday ? 'long' : undefined,
-    day: hasDay ? 'numeric' : undefined,
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
-  })
+export function formatDate(dateString: string, weekday = false) {
+  const date = parse(dateString, 'yyyy-MM-dd', new Date())
+
+  if (!isValid(date)) {
+    return 'Invalid Date'
+  }
+
+  const formatString = weekday ? 'EEEE, MMMM d, yyyy' : 'MMMM d, yyyy'
+
+  return format(date, formatString)
 }

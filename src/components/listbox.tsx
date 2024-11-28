@@ -75,31 +75,28 @@ export function Listbox<T>({
           </svg>
         </span>
       </Headless.ListboxButton>
-      <Headless.Transition
-        leave="transition-opacity duration-100 ease-in pointer-events-none"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
+      <Headless.ListboxOptions
+        transition
+        anchor="selection start"
+        className={clsx(
+          // Anchor positioning
+          '[--anchor-offset:-1.625rem] [--anchor-padding:theme(spacing.4)] sm:[--anchor-offset:-1.375rem]',
+          // Base styles
+          'isolate w-max min-w-[calc(var(--button-width)+1.75rem)] select-none scroll-py-1 rounded-xl p-1',
+          // Invisible border that is only visible in `forced-colors` mode for accessibility purposes
+          'outline outline-1 outline-transparent focus:outline-none',
+          // Handle scrolling when menu won't fit in viewport
+          'overflow-y-scroll overscroll-contain',
+          // Popover background
+          'bg-white/75 backdrop-blur-xl dark:bg-zinc-800/75',
+          // Shadows
+          'shadow-lg ring-1 ring-zinc-950/10 dark:ring-inset dark:ring-white/10',
+          // Transitions
+          'transition-opacity duration-100 ease-in data-[transition]:pointer-events-none data-[closed]:data-[leave]:opacity-0'
+        )}
       >
-        <Headless.ListboxOptions
-          anchor="selection start"
-          className={clsx(
-            // Anchor positioning
-            '[--anchor-offset:-1.625rem] [--anchor-padding:theme(spacing.4)] sm:[--anchor-offset:-1.375rem]',
-            // Base styles
-            'isolate w-max min-w-[calc(var(--button-width)+1.75rem)] select-none scroll-py-1 rounded-xl p-1',
-            // Invisible border that is only visible in `forced-colors` mode for accessibility purposes
-            'outline outline-1 outline-transparent focus:outline-none',
-            // Handle scrolling when menu won't fit in viewport
-            'overflow-y-scroll overscroll-contain',
-            // Popover background
-            'bg-white/75 backdrop-blur-xl dark:bg-zinc-800/75',
-            // Shadows
-            'shadow-lg ring-1 ring-zinc-950/10 dark:ring-inset dark:ring-white/10'
-          )}
-        >
-          {options}
-        </Headless.ListboxOptions>
-      </Headless.Transition>
+        {options}
+      </Headless.ListboxOptions>
     </Headless.Listbox>
   )
 }
@@ -109,7 +106,7 @@ export function ListboxOption<T>({
   className,
   ...props
 }: { className?: string; children?: React.ReactNode } & Omit<Headless.ListboxOptionProps<'div', T>, 'className'>) {
-  const sharedClasses = clsx(
+  let sharedClasses = clsx(
     // Base
     'flex min-w-0 items-center',
     // Icons

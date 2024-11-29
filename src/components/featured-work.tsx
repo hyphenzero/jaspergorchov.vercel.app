@@ -2,17 +2,15 @@
 
 import { Project } from '@/lib/mdx'
 import * as Headless from '@headlessui/react'
-import { ArrowLongRightIcon } from '@heroicons/react/20/solid'
+import { ArrowRightIcon } from '@heroicons/react/16/solid'
 import { clsx } from 'clsx'
-import { MotionValue, motion, useMotionValueEvent, useScroll, useSpring, type HTMLMotionProps } from 'framer-motion'
+import { MotionValue, motion, useMotionValueEvent, useScroll, useSpring, type HTMLMotionProps } from 'motion/react'
 import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 import Image from 'next/image'
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import useMeasure, { type RectReadOnly } from 'react-use-measure'
-import { Container } from './container'
-import { Link } from './link'
 import { Button } from './button'
-import { ArrowRightIcon } from '@heroicons/react/16/solid'
+import { Container } from './container'
 
 const testimonials = [
   {
@@ -64,6 +62,7 @@ function ProjectCard({
   title: string
   bounds: RectReadOnly
   scrollX: MotionValue<number>
+  onClick?: () => void
 } & HTMLMotionProps<'div'>) {
   let ref = useRef<HTMLDivElement | null>(null)
 
@@ -123,7 +122,8 @@ function CallToAction() {
   return (
     <div>
       <p className="max-w-sm text-sm/6 text-zinc-500 dark:text-zinc-400">
-        I create websites, web apps, 3D art, graphic design, motion graphics and more, using professional tools and technologies.
+        I create websites, web apps, 3D art, graphic design, motion graphics and more, using professional tools and
+        technologies.
       </p>
       <div className="mt-2">
         <Button plain href="#" className="-mx-[11px]">
@@ -137,7 +137,7 @@ function CallToAction() {
 
 export function FeaturedWork({ work }: { work: Project[] }) {
   let scrollRef = useRef<HTMLDivElement | null>(null)
-  let { scrollX } = useScroll({ container: scrollRef })
+  let { scrollX } = useScroll({ container: scrollRef as React.RefObject<HTMLElement> })
   let [setReferenceWindowRef, bounds] = useMeasure()
   let [activeIndex, setActiveIndex] = useState(0)
 

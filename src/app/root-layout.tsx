@@ -3,8 +3,7 @@
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { Article, Project } from '@/lib/mdx'
-import { clsx } from 'clsx'
-import { motion, useMotionValue, useTransform } from 'framer-motion'
+import { useMotionValue, useTransform } from 'motion/react'
 import { useEffect } from 'react'
 
 export function RootLayout({
@@ -44,7 +43,7 @@ export function RootLayout({
           style={{ opacity: borderOpacity }}
           className="absolute bottom-0 h-px w-full bg-zinc-950 dark:bg-white"
         /> */}
-			
+
       {/* <div className="-z-10 h-dvh fixed pointer-events-none max-w-7xl mx-auto inset-0 z-10 px-3 lg:px-4" aria-hidden="true">
         <div className="size-full border-x border-zinc-950/[7.5%] dark:border-white/[7.5%]" />
       </div> */}
